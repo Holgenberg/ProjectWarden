@@ -4,15 +4,19 @@
              xmlns:local="clr-namespace:ProjectWarden"
              x:Class="ProjectWarden.MainPage">
 
-    <StackLayout >
-        <!-- Place new controls here -->
-        <SearchBar x:Name="SearchContent" TextChanged="SearchContent_TextChanged"></SearchBar>
-        <Label Text="in Belfast" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <Grid>
-            <ListView x:Name="CountryList" ItemTapped="CountryList_ItemTapped"></ListView>
-        </Grid>
+    <StackLayout HorizontalOptions="Center" 
+                 VerticalOptions="Center">
+        <SearchBar  Placeholder="Search Address or Postcode" />
+        <!--<ListView x:Name="addressAndPostcodeList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding Address}"
+                        Detail="{Binding Postcode}">
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
     </StackLayout>
 
 </ContentPage>

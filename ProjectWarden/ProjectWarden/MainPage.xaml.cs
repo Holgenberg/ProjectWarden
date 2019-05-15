@@ -4,53 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using ProjectWarden.Models;
 
 namespace ProjectWarden
 {
     public partial class MainPage : ContentPage
     {
-        List<string> country = new List<string>
-        {
-            "India",
-            "pakistan",
-            "Srilanka",
-            "Bangladesh",
-            "Afghanistan"
-        };
-
         public MainPage()
         {
             InitializeComponent();
+
+            var propertyAddresses = SetPropertyAddresses();
+            //addressAndPostcodeList.ItemsSource = propertyAddresses;
         }
 
-        private void SearchContent_TextChanged(object sender, TextChangedEventArgs e)
+        private List<PropertyAddress> SetPropertyAddresses()
         {
-            var keyword = SearchContent.Text;
-            if (keyword.Length >= 1)
+            var propertyAddresses = new List<PropertyAddress>()
             {
-                var suggestion = country.Where(c => c.ToLower().Contains(keyword.ToLower()));
-                CountryList.ItemsSource = suggestion;
-                CountryList.IsVisible = true;
-            }
-            else
-            {
-                CountryList.IsVisible = false;
-            }
-        }
+                new PropertyAddress(){Address="37 Bagpipe Lane, Shamrock, Ireland", Postcode="A54 F4R2"},
+                new PropertyAddress(){Address="54 Guiness Avenue, Potato, Ireland", Postcode="T45 B4R2"}
+            };
 
-        private void CountryList_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item as string == null)
-            {
-                return;
-            }
-            else
-            {
-                CountryList.ItemsSource = country.Where(c => c.Equals(e.Item as string));
-                CountryList.IsVisible = true;
-                SearchContent.Text = e.Item as string;
-            }
-
+            return propertyAddresses;
         }
     }
 }

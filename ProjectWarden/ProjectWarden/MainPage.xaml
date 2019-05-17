@@ -6,8 +6,8 @@
 
     <StackLayout HorizontalOptions="Center" 
                  VerticalOptions="Center">
-        <SearchBar  Placeholder="Search Address or Postcode" />
-        <!--<ListView x:Name="addressAndPostcodeList">
+        <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
+        <ListView x:Name="AddressAndPostcodeList" IsVisible="False">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
@@ -16,7 +16,7 @@
                     </TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </StackLayout>
 
 </ContentPage>

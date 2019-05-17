@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ProjectWarden.Models;
+using System.Collections;
+using System.Globalization;
 
 namespace ProjectWarden
 {
     public partial class MainPage : ContentPage
     {
+        List<PropertyAddress> _propertyAddresses;
+
         public MainPage()
         {
             InitializeComponent();
-
-            var propertyAddresses = SetPropertyAddresses();
-            //addressAndPostcodeList.ItemsSource = propertyAddresses;
+            _propertyAddresses = SetPropertyAddresses();
         }
 
         private List<PropertyAddress> SetPropertyAddresses()
@@ -27,6 +29,35 @@ namespace ProjectWarden
             };
 
             return propertyAddresses;
+        }
+
+        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                AddressAndPostcodeList.IsVisible = false;
+            }
+
+            else
+            {
+                AddressAndPostcodeList.IsVisible = true;
+                AddressAndPostcodeList.ItemsSource = GetRelevantPropertyAddresses(e);                         
+            }
+        }
+
+        private IEnumerable GetRelevantPropertyAddresses(TextChangedEventArgs e)
+        {
+            var relevantPropertyAdressesAndPostcodes = new List<PropertyAddress>();
+
+            CultureInfo culture = new CultureInfo("es-ES", false);
+
+            relevantPropertyAdressesAndPostcodes.AddRange(_propertyAddresses.Where(pAddress => 
+                culture.CompareInfo.IndexOf(pAddress.Address, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
+            relevantPropertyAdressesAndPostcodes.AddRange(_propertyAddresses.Where(pPostcode =>
+                culture.CompareInfo.IndexOf(pPostcode.Postcode, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
+            relevantPropertyAdressesAndPostcodes = relevantPropertyAdressesAndPostcodes.Distinct().ToList();
+
+            return relevantPropertyAdressesAndPostcodes;
         }
     }
 }

@@ -5,7 +5,16 @@
              x:Class="ProjectWarden.MainPage">
 
     <AbsoluteLayout x:Name="AbsLayout">
-    <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
+        <Button x:Name="SubmitReviewBtn"
+                Text="+"
+                FontSize="40"
+                TextColor="SlateGray"
+                BackgroundColor="Transparent"
+                AbsoluteLayout.LayoutBounds="0.99, 0.01, -1, -1"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+        </Button>
+    <StackLayout x:Name="StckLayout"
+                 AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
                  AbsoluteLayout.LayoutFlags="PositionProportional">
         <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
         <ListView x:Name="AddressAndPostcodeList" IsVisible="False">

@@ -35,13 +35,15 @@ namespace ProjectWarden
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
+                SubmitReviewBtn.IsVisible = true;
                 AddressAndPostcodeList.IsVisible = false;
-                AbsoluteLayout.SetLayoutFlags(AbsLayout.Children[0], AbsoluteLayoutFlags.PositionProportional);
+                AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.PositionProportional);
             }
 
             else
             {
-                AbsoluteLayout.SetLayoutFlags(AbsLayout.Children[0], AbsoluteLayoutFlags.None);
+                AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
+                SubmitReviewBtn.IsVisible = false;
                 AddressAndPostcodeList.IsVisible = true;
                 AddressAndPostcodeList.ItemsSource = GetRelevantPropertyAddresses(e);                         
             }

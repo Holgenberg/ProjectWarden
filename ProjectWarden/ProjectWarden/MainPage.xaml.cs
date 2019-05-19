@@ -63,5 +63,10 @@ namespace ProjectWarden
 
             return relevantPropertyAdressesAndPostcodes;
         }
+
+        async void SubmitReviewBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReviewSubmissionPage());
+        }
     }
 }

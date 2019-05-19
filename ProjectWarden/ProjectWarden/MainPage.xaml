@@ -6,6 +6,7 @@
 
     <AbsoluteLayout x:Name="AbsLayout">
         <Button x:Name="SubmitReviewBtn"
+                Clicked="SubmitReviewBtn_Clicked"
                 Text="+"
                 FontSize="40"
                 TextColor="SlateGray"

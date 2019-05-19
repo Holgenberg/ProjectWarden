@@ -36,10 +36,12 @@ namespace ProjectWarden
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
                 AddressAndPostcodeList.IsVisible = false;
+                AbsoluteLayout.SetLayoutFlags(AbsLayout.Children[0], AbsoluteLayoutFlags.PositionProportional);
             }
 
             else
             {
+                AbsoluteLayout.SetLayoutFlags(AbsLayout.Children[0], AbsoluteLayoutFlags.None);
                 AddressAndPostcodeList.IsVisible = true;
                 AddressAndPostcodeList.ItemsSource = GetRelevantPropertyAddresses(e);                         
             }

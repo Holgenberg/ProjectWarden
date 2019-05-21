@@ -17,7 +17,7 @@ namespace ProjectWarden
         public MainPage()
         {
             InitializeComponent();
-            _propertyAddresses = SetPropertyAddresses();
+            _propertyAddresses = SetPropertyAddresses();            
         }
 
         private List<PropertyAddress> SetPropertyAddresses()

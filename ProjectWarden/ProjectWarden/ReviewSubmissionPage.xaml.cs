@@ -16,5 +16,24 @@ namespace ProjectWarden
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override bool OnBackButtonPressed()
+        {
+            HideThisPageContent();
+            Navigation.PopAsync(true);
+            return base.OnBackButtonPressed();
+        }
+
+        protected override void OnDisappearing()
+        {
+            HideThisPageContent();
+            base.OnDisappearing();
+        }
+
+        private void HideThisPageContent()
+        {
+            StckLayout.IsVisible = false;
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+    }
 }

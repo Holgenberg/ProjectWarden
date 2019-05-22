@@ -3,22 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectWarden.ReviewSubmissionPage">
     <ContentPage.Content>
-        <StackLayout x:Name="StckLayout"
+        <ScrollView>
+            <StackLayout x:Name="StckLayout"
                      VerticalOptions="StartAndExpand"
                      Margin="20">
-            <Label Text="Address Line 1"/>
-            <Entry Text="{Binding AddressLine1}"/>
-            <Label Text="Address Line 2"/>
-            <Entry Text="{Binding AddressLine2}"/>
-            <Label Text="City / Town"/>
-            <Entry Text="{Binding CityTown}"/>
-            <Label Text="County / Region / State"/>
-            <Entry Text="{Binding CountyRegionState}"/>
-            <Label Text="Country"/>
-            <Entry Text="United Kingdom"
-                   IsEnabled="False"/>
-            <Label Text="Postcode"/>
-            <Entry Text="{Binding Postcode}"/>
-        </StackLayout>
+                <Label Text="Address Line 1"/>
+                <Entry Text="{Binding AddressLine1}"/>
+                <Label Text="Address Line 2"/>
+                <Entry Text="{Binding AddressLine2}"/>
+                <Label Text="City / Town"/>
+                <Entry Text="{Binding CityTown}"/>
+                <Label Text="County / Region / State"/>
+                <Entry Text="{Binding CountyRegionState}"/>
+                <Label Text="Country"/>
+                <Entry Text="United Kingdom"
+                       IsEnabled="False"/>
+                <Label Text="Postcode"/>
+                <Entry Text="{Binding Postcode}"/>
+                <Label Text="Leave a Name (optional)"/>
+                <Entry Text="{Binding Name}"/>
+                <Label Text="Your Review"/>
+                <Editor Text="{Binding Review}"
+                        AutoSize="TextChanges"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

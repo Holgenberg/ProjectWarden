@@ -25,6 +25,12 @@
                 <Label Text="Your Review"/>
                 <Editor Text="{Binding Review}"
                         AutoSize="TextChanges"/>
+                <Grid>
+                    <ImageButton Source="SmilyButton.png"
+                                 Grid.Column="0"/>
+                    <ImageButton Source="SadButton.png"
+                                 Grid.Column="1"
+                </Grid>
                 <Button Text="Submit"
                         HorizontalOptions="CenterAndExpand"/>
             </StackLayout>

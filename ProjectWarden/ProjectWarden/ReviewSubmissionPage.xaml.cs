@@ -15,9 +15,9 @@ namespace ProjectWarden
 		public ReviewSubmissionPage ()
 		{
 			InitializeComponent ();
-            SadButton.Opacity = 0.8;
-            SmileyButton.Opacity = 0.8;
-		}
+            VisualStateManager.GoToState(SmileyButton, "Unclicked");
+            VisualStateManager.GoToState(SadButton, "Unclicked");
+        }
 
         protected override bool OnBackButtonPressed()
         {
@@ -40,12 +40,14 @@ namespace ProjectWarden
 
         private void SmileyBtn_Clicked(object sender, EventArgs e)
         {
-
+            VisualStateManager.GoToState(SmileyButton, "Clicked");
+            VisualStateManager.GoToState(SadButton, "Unclicked");
         }
 
         private void SadBtn_Clicked(object sender, EventArgs e)
         {
-
+            VisualStateManager.GoToState(SadButton, "Clicked");
+            VisualStateManager.GoToState(SmileyButton, "Unclicked");
         }
     }
 }

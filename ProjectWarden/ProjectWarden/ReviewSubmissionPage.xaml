@@ -25,6 +25,18 @@
                 <Label Text="Your Review"/>
                 <Editor Text="{Binding Review}"
                         AutoSize="TextChanges"/>
+                <Grid>
+                    <ImageButton x:Name="SmileyButton"
+                                 Clicked="SmileyBtn_Clicked"
+                                 Source="SmileyButton.png"
+                                 Grid.Column="0"
+                                 BackgroundColor="Transparent"/>
+                    <ImageButton x:Name="SadButton"
+                                 Clicked="SadBtn_Clicked"
+                                 Source="SadButton.png"
+                                 Grid.Column="1"
+                                 BackgroundColor="Transparent"/>
+                </Grid>
                 <Button Text="Submit"
                         HorizontalOptions="CenterAndExpand"/>
             </StackLayout>

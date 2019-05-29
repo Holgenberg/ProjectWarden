@@ -15,6 +15,8 @@ namespace ProjectWarden
 		public ReviewSubmissionPage ()
 		{
 			InitializeComponent ();
+            SadButton.Opacity = 0.8;
+            SmileyButton.Opacity = 0.8;
 		}
 
         protected override bool OnBackButtonPressed()
@@ -34,6 +36,16 @@ namespace ProjectWarden
         {
             StckLayout.IsVisible = false;
             NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        private void SmileyBtn_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SadBtn_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

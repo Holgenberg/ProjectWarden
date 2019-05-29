@@ -95,10 +95,10 @@
     <AndroidResource Include="Resources\drawable\SadButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SmilyButton.png" />
+    <AndroidResource Include="Resources\drawable\SmileyButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\SmilyButton.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\SmileyButton.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\SadButton.png" />
@@ -107,19 +107,19 @@
     <AndroidResource Include="Resources\drawable-hdpi\SadButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\SmilyButton.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\SmileyButton.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\SadButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\SmilyButton.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\SmileyButton.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\SadButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\SmilyButton.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\SmileyButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

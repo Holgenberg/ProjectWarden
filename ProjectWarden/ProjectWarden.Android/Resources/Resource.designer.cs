@@ -5018,7 +5018,7 @@ namespace ProjectWarden.Droid
 			public const int SadButton = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int SmilyButton = 2130837804;
+			public const int SmileyButton = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
 			public const int tooltip_frame_dark = 2130837805;

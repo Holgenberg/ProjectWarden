@@ -12,23 +12,21 @@ namespace ProjectWarden
 {
     public partial class MainPage : ContentPage
     {
-        List<PropertyAddress> _propertyAddresses;
+        List<PropertyAddress> propertyAddresses;
 
         public MainPage()
         {
             InitializeComponent();
-            _propertyAddresses = SetPropertyAddresses();            
+            SetPropertyAddresses();            
         }
 
-        private List<PropertyAddress> SetPropertyAddresses()
+        private void SetPropertyAddresses()
         {
-            var propertyAddresses = new List<PropertyAddress>()
+            propertyAddresses = new List<PropertyAddress>()
             {
                 new PropertyAddress(){Address="37 Bagpipe Lane, Shamrock, Ireland", Postcode="A54 F4R2"},
                 new PropertyAddress(){Address="54 Guiness Avenue, Potato, Ireland", Postcode="T45 B4R2"}
             };
-
-            return propertyAddresses;
         }
 
         private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -55,10 +53,12 @@ namespace ProjectWarden
 
             CultureInfo culture = new CultureInfo("es-ES", false);
 
-            relevantPropertyAdressesAndPostcodes.AddRange(_propertyAddresses.Where(pAddress => 
+            relevantPropertyAdressesAndPostcodes.AddRange(propertyAddresses.Where(pAddress => 
                 culture.CompareInfo.IndexOf(pAddress.Address, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
-            relevantPropertyAdressesAndPostcodes.AddRange(_propertyAddresses.Where(pPostcode =>
+
+            relevantPropertyAdressesAndPostcodes.AddRange(propertyAddresses.Where(pPostcode =>
                 culture.CompareInfo.IndexOf(pPostcode.Postcode, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
+
             relevantPropertyAdressesAndPostcodes = relevantPropertyAdressesAndPostcodes.Distinct().ToList();
 
             return relevantPropertyAdressesAndPostcodes;

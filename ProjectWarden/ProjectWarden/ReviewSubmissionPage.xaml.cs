@@ -65,7 +65,7 @@ namespace ProjectWarden
         {
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
-                return;
+                VisualStateManager.GoToState(AddressLine1, "HasNoText");               
             }
         }
     }

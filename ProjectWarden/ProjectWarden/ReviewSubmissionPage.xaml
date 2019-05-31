@@ -9,9 +9,11 @@
                      Margin="20">
                 <Label Text="Address Line 1"/>
                 <Entry x:Name="AddressLine1" 
-                       Text="{Binding ReviewForm.AddressLine1}">
+                       Text="{Binding ReviewForm.AddressLine1}"
+                       TextChanged="AddressLine1_OnTextChanged">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup>
+                            <VisualState Name="HasText"/>
                             <VisualState Name="HasNoText">
                                 <VisualState.Setters>
                                     <Setter Property="FontAttributes" Value="Italic" />

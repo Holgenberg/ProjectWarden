@@ -10,15 +10,15 @@ using Xamarin.Forms.Xaml;
 
 namespace ProjectWarden
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ReviewSubmissionPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ReviewSubmissionPage : ContentPage
+    {
         ReviewForm reviewForm;
 
-        public ReviewSubmissionPage ()
-		{
-			InitializeComponent ();
-            SetBindingContextToReviewForm();            
+        public ReviewSubmissionPage()
+        {
+            InitializeComponent();
+            SetBindingContextToReviewForm();
 
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
@@ -65,8 +65,13 @@ namespace ProjectWarden
         {
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
-                VisualStateManager.GoToState(AddressLine1, "HasNoText");               
+                VisualStateManager.GoToState(AddressLine1, "HasNoText");
             }
+        }
+
+        private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            VisualStateManager.GoToState(AddressLine1, "HasText");
         }
     }
 }

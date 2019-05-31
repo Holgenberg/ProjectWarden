@@ -8,22 +8,37 @@
                      VerticalOptions="StartAndExpand"
                      Margin="20">
                 <Label Text="Address Line 1"/>
-                <Entry Text="{Binding AddressLine1}"/>
+                <Entry x:Name="AddressLine1" 
+                       Text="{Binding ReviewForm.AddressLine1}"
+                       TextChanged="AddressLine1_OnTextChanged">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState Name="HasText"/>
+                            <VisualState Name="HasNoText">
+                                <VisualState.Setters>
+                                    <Setter Property="FontAttributes" Value="Italic" />
+                                    <Setter Property="Placeholder" Value="required" />
+                                    <Setter Property="BackgroundColor" Value="Pink" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Entry>
                 <Label Text="Address Line 2"/>
-                <Entry Text="{Binding AddressLine2}"/>
+                <Entry Text="{Binding ReviewForm.AddressLine2}"/>
                 <Label Text="City / Town"/>
-                <Entry Text="{Binding CityTown}"/>
+                <Entry Text="{Binding ReviewForm.CityTown}"/>
                 <Label Text="County / Region / State"/>
-                <Entry Text="{Binding CountyRegionState}"/>
+                <Entry Text="{Binding ReviewForm.CountyRegionState}"/>
                 <Label Text="Country"/>
                 <Entry Text="United Kingdom"
                        IsEnabled="False"/>
                 <Label Text="Postcode"/>
-                <Entry Text="{Binding Postcode}"/>
+                <Entry Text="{Binding ReviewForm.Postcode}"/>
                 <Label Text="Leave a Name (optional)"/>
-                <Entry Text="{Binding Name}"/>
+                <Entry Text="{Binding ReviewForm.Name}"/>
                 <Label Text="Your Review"/>
-                <Editor Text="{Binding Review}"
+                <Editor Text="{Binding ReviewForm.Review}"
                         AutoSize="TextChanges"/>
                 <Grid>
                     <ImageButton x:Name="SmileyButton"
@@ -64,7 +79,8 @@
                     </ImageButton>
                 </Grid>
                 <Button Text="Submit"
-                        HorizontalOptions="CenterAndExpand"/>
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="SubmitBtn_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

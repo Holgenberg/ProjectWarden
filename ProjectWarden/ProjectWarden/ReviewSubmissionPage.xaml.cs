@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectWarden.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,24 @@ using Xamarin.Forms.Xaml;
 
 namespace ProjectWarden
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ReviewSubmissionPage : ContentPage
-	{
-		public ReviewSubmissionPage ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ReviewSubmissionPage : ContentPage
+    {
+        ReviewForm reviewForm;
+
+        public ReviewSubmissionPage()
+        {
+            InitializeComponent();
+            SetBindingContextToReviewForm();
+
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
+        }
+
+        private void SetBindingContextToReviewForm()
+        {
+            reviewForm = new ReviewForm();
+            BindingContext = reviewForm;
         }
 
         protected override bool OnBackButtonPressed()
@@ -48,6 +59,19 @@ namespace ProjectWarden
         {
             VisualStateManager.GoToState(SadButton, "Clicked");
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
+        }
+
+        private void SubmitBtn_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(reviewForm.AddressLine1))
+            {
+                VisualStateManager.GoToState(AddressLine1, "HasNoText");
+            }
+        }
+
+        private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            VisualStateManager.GoToState(AddressLine1, "HasText");
         }
     }
 }

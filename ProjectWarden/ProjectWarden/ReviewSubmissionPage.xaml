@@ -27,7 +27,22 @@
                 <Label Text="Address Line 2"/>
                 <Entry Text="{Binding ReviewForm.AddressLine2}"/>
                 <Label Text="City / Town"/>
-                <Entry Text="{Binding ReviewForm.CityTown}"/>
+                <Entry x:Name="CityTown"
+                       Text="{Binding ReviewForm.CityTown}"
+                       TextChanged="CityTown_OnTextChanged">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState Name="HasText"/>
+                            <VisualState Name="HasNoText">
+                                <VisualState.Setters>
+                                    <Setter Property="FontAttributes" Value="Italic" />
+                                    <Setter Property="Placeholder" Value="required" />
+                                    <Setter Property="BackgroundColor" Value="Pink" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Entry>
                 <Label Text="County / Region / State"/>
                 <Entry Text="{Binding ReviewForm.CountyRegionState}"/>
                 <Label Text="Country"/>

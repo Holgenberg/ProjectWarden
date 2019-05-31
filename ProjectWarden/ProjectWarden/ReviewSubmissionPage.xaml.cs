@@ -67,11 +67,21 @@ namespace ProjectWarden
             {
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
             }
+
+            if (string.IsNullOrEmpty(reviewForm.Postcode))
+            {
+                VisualStateManager.GoToState(CityTown, "HasNoText");
+            }
         }
 
         private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             VisualStateManager.GoToState(AddressLine1, "HasText");
+        }
+
+        private void CityTown_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            VisualStateManager.GoToState(CityTown, "HasNoText");
         }
     }
 }

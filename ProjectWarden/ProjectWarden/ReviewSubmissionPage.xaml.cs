@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectWarden.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,21 @@ namespace ProjectWarden
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ReviewSubmissionPage : ContentPage
 	{
-		public ReviewSubmissionPage ()
+        ReviewForm reviewForm;
+
+        public ReviewSubmissionPage ()
 		{
 			InitializeComponent ();
+            SetBindingContextToReviewForm();            
+
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
+        }
+
+        private void SetBindingContextToReviewForm()
+        {
+            reviewForm = new ReviewForm();
+            BindingContext = reviewForm;
         }
 
         protected override bool OnBackButtonPressed()
@@ -48,6 +59,14 @@ namespace ProjectWarden
         {
             VisualStateManager.GoToState(SadButton, "Clicked");
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
+        }
+
+        private void SubmitBtn_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(reviewForm.AddressLine1))
+            {
+                return;
+            }
         }
     }
 }

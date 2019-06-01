@@ -72,6 +72,11 @@ namespace ProjectWarden
             {
                 VisualStateManager.GoToState(CityTown, "HasNoText");
             }
+
+            if (string.IsNullOrEmpty(reviewForm.CountyRegionState))
+            {
+                VisualStateManager.GoToState(CountyRegionState, "HasNoText");
+            }
         }
 
         private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -82,6 +87,11 @@ namespace ProjectWarden
         private void CityTown_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             VisualStateManager.GoToState(CityTown, "HasText");
+        }
+
+        private void CountyRegionState_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            VisualStateManager.GoToState(CountyRegionState, "HasText");
         }
     }
 }

@@ -40,7 +40,10 @@
                        Style="{StaticResource TextRequredStyle}">
                 </Entry>
                 <Label Text="County / Region / State"/>
-                <Entry Text="{Binding ReviewForm.CountyRegionState}"/>
+                <Entry x:Name="CountyRegionState"
+                       Text="{Binding ReviewForm.CountyRegionState}"
+                       TextChanged="CountyRegionState_OnTextChanged"
+                       Style="{StaticResource TextRequredStyle}"/>
                 <Label Text="Country"/>
                 <Entry Text="United Kingdom"
                        IsEnabled="False"/>

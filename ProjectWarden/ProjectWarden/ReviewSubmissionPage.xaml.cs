@@ -68,7 +68,7 @@ namespace ProjectWarden
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
             }
 
-            if (string.IsNullOrEmpty(reviewForm.Postcode))
+            if (string.IsNullOrEmpty(reviewForm.CityTown))
             {
                 VisualStateManager.GoToState(CityTown, "HasNoText");
             }
@@ -81,7 +81,7 @@ namespace ProjectWarden
 
         private void CityTown_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            VisualStateManager.GoToState(CityTown, "HasNoText");
+            VisualStateManager.GoToState(CityTown, "HasText");
         }
     }
 }

@@ -7,22 +7,29 @@
             <StackLayout x:Name="StckLayout"
                      VerticalOptions="StartAndExpand"
                      Margin="20">
+                <StackLayout.Resources>
+                    <Style x:Key="TextRequredStyle" TargetType="Entry">
+                        <Setter Property="VisualStateManager.VisualStateGroups">
+                            <VisualStateGroupList>
+                                <VisualStateGroup>
+                                    <VisualState Name="HasText"/>
+                                    <VisualState Name="HasNoText">
+                                        <VisualState.Setters>
+                                            <Setter Property="FontAttributes" Value="Italic" />
+                                            <Setter Property="Placeholder" Value="required" />
+                                            <Setter Property="BackgroundColor" Value="Pink" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </Setter>
+                    </Style>
+                </StackLayout.Resources>
                 <Label Text="Address Line 1"/>
                 <Entry x:Name="AddressLine1" 
                        Text="{Binding ReviewForm.AddressLine1}"
-                       TextChanged="AddressLine1_OnTextChanged">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState Name="HasText"/>
-                            <VisualState Name="HasNoText">
-                                <VisualState.Setters>
-                                    <Setter Property="FontAttributes" Value="Italic" />
-                                    <Setter Property="Placeholder" Value="required" />
-                                    <Setter Property="BackgroundColor" Value="Pink" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
+                       TextChanged="AddressLine1_OnTextChanged"
+                       Style="{StaticResource TextRequredStyle}">
                 </Entry>
                 <Label Text="Address Line 2"/>
                 <Entry Text="{Binding ReviewForm.AddressLine2}"/>
@@ -30,18 +37,6 @@
                 <Entry x:Name="CityTown"
                        Text="{Binding ReviewForm.CityTown}"
                        TextChanged="CityTown_OnTextChanged">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState Name="HasText"/>
-                            <VisualState Name="HasNoText">
-                                <VisualState.Setters>
-                                    <Setter Property="FontAttributes" Value="Italic" />
-                                    <Setter Property="Placeholder" Value="required" />
-                                    <Setter Property="BackgroundColor" Value="Pink" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
                 </Entry>
                 <Label Text="County / Region / State"/>
                 <Entry Text="{Binding ReviewForm.CountyRegionState}"/>

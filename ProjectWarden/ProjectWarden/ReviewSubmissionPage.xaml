@@ -36,7 +36,8 @@
                 <Label Text="City / Town"/>
                 <Entry x:Name="CityTown"
                        Text="{Binding ReviewForm.CityTown}"
-                       TextChanged="CityTown_OnTextChanged">
+                       TextChanged="CityTown_OnTextChanged"
+                       Style="{StaticResource TextRequredStyle}">
                 </Entry>
                 <Label Text="County / Region / State"/>
                 <Entry Text="{Binding ReviewForm.CountyRegionState}"/>

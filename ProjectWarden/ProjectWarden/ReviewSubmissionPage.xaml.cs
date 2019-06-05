@@ -77,6 +77,16 @@ namespace ProjectWarden
             {
                 VisualStateManager.GoToState(CountyRegionState, "HasNoText");
             }
+
+            if (string.IsNullOrEmpty(reviewForm.Postcode))
+            {
+                VisualStateManager.GoToState(Postcode, "HasNoText");
+            }
+
+            else if (reviewForm.ValidUKPostcode() == false)
+            {
+                VisualStateManager.GoToState(Postcode, "InvalidPostcode");
+            }
         }
 
         private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -92,6 +102,11 @@ namespace ProjectWarden
         private void CountyRegionState_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             VisualStateManager.GoToState(CountyRegionState, "HasText");
+        }
+
+        private void Postcode_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            VisualStateManager.GoToState(Postcode, "HasText");
         }
     }
 }

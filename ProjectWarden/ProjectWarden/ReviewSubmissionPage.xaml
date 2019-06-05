@@ -29,16 +29,14 @@
                 <Entry x:Name="AddressLine1" 
                        Text="{Binding ReviewForm.AddressLine1}"
                        TextChanged="AddressLine1_OnTextChanged"
-                       Style="{StaticResource TextRequredStyle}">
-                </Entry>
+                       Style="{StaticResource TextRequredStyle}"/>
                 <Label Text="Address Line 2"/>
                 <Entry Text="{Binding ReviewForm.AddressLine2}"/>
                 <Label Text="City / Town"/>
                 <Entry x:Name="CityTown"
                        Text="{Binding ReviewForm.CityTown}"
                        TextChanged="CityTown_OnTextChanged"
-                       Style="{StaticResource TextRequredStyle}">
-                </Entry>
+                       Style="{StaticResource TextRequredStyle}"/>
                 <Label Text="County / Region / State"/>
                 <Entry x:Name="CountyRegionState"
                        Text="{Binding ReviewForm.CountyRegionState}"
@@ -48,7 +46,32 @@
                 <Entry Text="United Kingdom"
                        IsEnabled="False"/>
                 <Label Text="Postcode"/>
-                <Entry Text="{Binding ReviewForm.Postcode}"/>
+                <Entry x:Name="Postcode"
+                       Text="{Binding ReviewForm.Postcode}"
+                       TextChanged="Postcode_OnTextChanged"
+                       Style="{StaticResource TextRequredStyle}">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup>
+                                <VisualState Name="HasText"/>
+                                <VisualState Name="HasNoText">
+                                    <VisualState.Setters>
+                                        <Setter Property="FontAttributes" Value="Italic" />
+                                        <Setter Property="Placeholder" Value="required" />
+                                        <Setter Property="BackgroundColor" Value="Pink" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="InvalidPostcode">
+                                    <VisualState.Setters>
+                                        <Setter Property="FontAttributes" Value="Italic" />
+                                        <Setter Property="Placeholder" Value="please enter a valid postcode" />
+                                        <Setter Property="BackgroundColor" Value="Pink" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Entry>
                 <Label Text="Leave a Name (optional)"/>
                 <Entry Text="{Binding ReviewForm.Name}"/>
                 <Label Text="Your Review"/>

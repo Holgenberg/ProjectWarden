@@ -17,7 +17,7 @@ namespace ProjectWarden.Models
 
         public bool ValidUKPostcode()
         {
-            var ukPostcodePattern = "^([A-Z]{1,2})([0-9][0-9A-Z]?) ([0-9])([ABDEFGHJLNPQRSTUWXYZ]{2})$";
+            var ukPostcodePattern = @"(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))\s?[0-9][A-Z-[CIKMOV]]{2})";
             var ukPostRegex = new Regex(ukPostcodePattern, RegexOptions.IgnoreCase);
 
             if (ukPostRegex.IsMatch(Postcode))

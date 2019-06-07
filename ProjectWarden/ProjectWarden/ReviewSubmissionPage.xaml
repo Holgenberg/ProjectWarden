@@ -57,7 +57,7 @@
                        Text="{Binding ReviewForm.CountyRegionState}"
                        TextChanged="CountyRegionState_OnTextChanged"
                        Style="{StaticResource TextRequredStyle}"/>
-                <Label Text="Country"/>
+                <Label Text="Country (cannot be currently changed)"/>
                 <Entry Text="United Kingdom"
                        IsEnabled="False"/>
                 <Label Text="Postcode"/>

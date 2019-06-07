@@ -87,6 +87,11 @@ namespace ProjectWarden
             {
                 VisualStateManager.GoToState(Postcode, "InvalidPostcode");
             }
+
+            if (string.IsNullOrEmpty(reviewForm.Name))
+            {
+                reviewForm.Name = "Anonymous";
+            }
         }
 
         private void AddressLine1_OnTextChanged(object sender, TextChangedEventArgs e)

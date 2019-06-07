@@ -22,6 +22,8 @@ namespace ProjectWarden
 
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
+
+            reviewForm.SadOrSmileyClicked = false;
         }
 
         private void SetBindingContextToReviewForm()
@@ -51,12 +53,20 @@ namespace ProjectWarden
 
         private void SmileyBtn_Clicked(object sender, EventArgs e)
         {
+            reviewForm.SadOrSmileyClicked = true;
+
+            VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "Clicked");
+
             VisualStateManager.GoToState(SmileyButton, "Clicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
         }
 
         private void SadBtn_Clicked(object sender, EventArgs e)
         {
+            reviewForm.SadOrSmileyClicked = true;
+
+            VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "Clicked");
+
             VisualStateManager.GoToState(SadButton, "Clicked");
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
         }
@@ -91,6 +101,11 @@ namespace ProjectWarden
             if (string.IsNullOrEmpty(reviewForm.Name))
             {
                 reviewForm.Name = "anonymous";
+            }         
+            
+            if (reviewForm.SadOrSmileyClicked == false)
+            {
+                VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "UnclickedAndSumbitted");
             }
         }
 

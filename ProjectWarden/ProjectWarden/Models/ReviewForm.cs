@@ -14,6 +14,7 @@ namespace ProjectWarden.Models
         public string Postcode { get; set; }
         public string Name { get; set; }
         public string Review { get; set; }
+        public bool SadOrSmileyClicked { get; set; }
 
         public bool ValidUKPostcode()
         {

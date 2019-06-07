@@ -93,6 +93,26 @@
                 <Label Text="Your Review (optional)"/>
                 <Editor Text="{Binding ReviewForm.Review}"
                         AutoSize="TextChanges"/>
+                <Label  x:Name="SadOrSmileyButtonClickInformer"
+                        Text="Please click one of the following responses">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup>
+                                <VisualState Name="Clicked">
+                                    <VisualState.Setters>
+                                        <Setter Property="IsVisible" Value="False"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="UnclickedAndSumbitted">
+                                    <VisualState.Setters>
+                                        <Setter Property="Text" Value="*Please click one of the following responses"/>
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Label>
                 <Grid>
                     <ImageButton x:Name="SmileyButton"
                                  Clicked="SmileyBtn_Clicked"    

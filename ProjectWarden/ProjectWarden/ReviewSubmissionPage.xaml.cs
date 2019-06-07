@@ -90,7 +90,7 @@ namespace ProjectWarden
 
             if (string.IsNullOrEmpty(reviewForm.Name))
             {
-                reviewForm.Name = "Anonymous";
+                reviewForm.Name = "anonymous";
             }
         }
 

@@ -87,7 +87,8 @@
                     </VisualStateManager.VisualStateGroups>
                 </Entry>
                 <Label Text="Leave a Name (optional)"/>
-                <Entry Text="{Binding ReviewForm.Name}"/>
+                <Entry Text="{Binding ReviewForm.Name}"
+                        Placeholder="anonymous"/>
                 <Label Text="Your Review (optional)"/>
                 <Editor Text="{Binding ReviewForm.Review}"
                         AutoSize="TextChanges"/>

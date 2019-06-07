@@ -63,8 +63,7 @@
                 <Label Text="Postcode"/>
                 <Entry x:Name="Postcode"
                        Text="{Binding ReviewForm.Postcode}"
-                       TextChanged="Postcode_OnTextChanged"
-                       Style="{StaticResource TextRequredStyle}">
+                       TextChanged="Postcode_OnTextChanged">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroupList>
                             <VisualStateGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 
 namespace ProjectWarden.Models
@@ -14,7 +14,8 @@ namespace ProjectWarden.Models
         public string Postcode { get; set; }
         public string Name { get; set; }
         public string Review { get; set; }
-        public bool SadOrSmileyClicked { get; set; }
+        public bool SadClicked { get; set; }
+        public bool SmileyClicked { get; set; }
 
         public bool ValidUKPostcode()
         {
@@ -27,6 +28,49 @@ namespace ProjectWarden.Models
             }
 
             else return false;
+        }
+
+        public async void SendToDatabase()
+        {
+            string liked = SetLikedValue();
+
+            var desinationUri = "https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review";
+
+            var values = new Dictionary<string, string>
+                {
+                    { "addressLine1", AddressLine1 },
+                    { "addressLine2", AddressLine2 },
+                    { "cityTown", CityTown},
+                    { "countyRegionState",  CountyRegionState},
+                    { "postcode", Postcode},
+                    { "reviewerName", Name},
+                    { "liked",  liked}
+                };
+
+            var content = new FormUrlEncodedContent(values);
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync(desinationUri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        private string SetLikedValue()
+        {
+            string liked = string.Empty;
+
+            if (SmileyClicked)
+            {
+                liked = "1";
+            }
+
+            else if (SadClicked)
+            {
+                liked = "0";
+            }
+
+            return liked;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ProjectWarden.Models
         {
             string liked = SetLikedValue();
 
-            var desinationUri = "https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review";
+            var desinationUrl = "https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/submitreview";
 
             var values = new Dictionary<string, string>
                 {
@@ -51,7 +51,7 @@ namespace ProjectWarden.Models
 
             using (HttpClient httpClient = new HttpClient())
             {
-                var response = await httpClient.PostAsync(desinationUri, content);
+                var response = await httpClient.PostAsync(desinationUrl, content);
                 var responseString = await response.Content.ReadAsStringAsync();
             }
         }

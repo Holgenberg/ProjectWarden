@@ -36,22 +36,19 @@ namespace ProjectWarden.Models
 
             var desinationUrl = "https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/submitreview";
 
-            var values = new Dictionary<string, string>
-                {
-                    { "addressLine1", AddressLine1 },
-                    { "addressLine2", AddressLine2 },
-                    { "cityTown", CityTown},
-                    { "countyRegionState",  CountyRegionState},
-                    { "postcode", Postcode},
-                    { "reviewerName", Name},
-                    { "liked",  liked}
-                };
-
-            var content = new FormUrlEncodedContent(values);
+            FormUrlEncodedContent formContent = new FormUrlEncodedContent(new[]{
+                new KeyValuePair<string, string>("addressLine1", AddressLine1),
+                new KeyValuePair<string, string>("addressLine2", AddressLine2),
+                new KeyValuePair<string, string>("cityTown", CityTown),
+                new KeyValuePair<string, string>("countyRegionState",  CountyRegionState),
+                new KeyValuePair<string, string>("postcode", Postcode),
+                new KeyValuePair<string, string>("reviewerName", Name),
+                new KeyValuePair<string, string>("liked",  liked)
+            });
 
             using (HttpClient httpClient = new HttpClient())
             {
-                var response = await httpClient.PostAsync(desinationUrl, content);
+                var response = await httpClient.PostAsync(desinationUrl, formContent);
                 var responseString = await response.Content.ReadAsStringAsync();
             }
         }

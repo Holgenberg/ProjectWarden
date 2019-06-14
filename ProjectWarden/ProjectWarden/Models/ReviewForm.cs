@@ -37,13 +37,13 @@ namespace ProjectWarden.Models
             var desinationUrl = "https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/submitreview";
 
             FormUrlEncodedContent formContent = new FormUrlEncodedContent(new[]{
-                new KeyValuePair<string, string>("addressLine1", AddressLine1),
-                new KeyValuePair<string, string>("addressLine2", AddressLine2),
-                new KeyValuePair<string, string>("cityTown", CityTown),
-                new KeyValuePair<string, string>("countyRegionState",  CountyRegionState),
-                new KeyValuePair<string, string>("postcode", Postcode),
-                new KeyValuePair<string, string>("reviewerName", Name),
-                new KeyValuePair<string, string>("liked",  liked)
+                new KeyValuePair<string, string>("AddressLine1", AddressLine1),
+                new KeyValuePair<string, string>("AddressLine2", AddressLine2),
+                new KeyValuePair<string, string>("CityTown", CityTown),
+                new KeyValuePair<string, string>("CountyRegionState",  CountyRegionState),
+                new KeyValuePair<string, string>("Postcode", Postcode),
+                new KeyValuePair<string, string>("ReviewerName", Name),
+                new KeyValuePair<string, string>("Liked",  liked)
             });
 
             using (HttpClient httpClient = new HttpClient())

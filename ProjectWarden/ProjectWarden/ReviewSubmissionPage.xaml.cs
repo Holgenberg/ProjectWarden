@@ -113,7 +113,7 @@ namespace ProjectWarden
 
             else
             {
-                reviewForm.SendToDatabase();
+                WebAPIHandler.SendToDatabase(reviewForm);
             }
         }
 

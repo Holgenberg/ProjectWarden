@@ -114,6 +114,7 @@ namespace ProjectWarden
             else
             {
                 WebAPIHandler.SendToDatabase(reviewForm);
+                Navigation.PopAsync();
             }
         }
 

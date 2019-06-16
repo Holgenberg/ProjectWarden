@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace ProjectWarden
 {
@@ -76,6 +77,8 @@ namespace ProjectWarden
 
         private void SubmitBtn_Clicked(object sender, EventArgs e)
         {
+            NetworkAccess networkAccess = Connectivity.NetworkAccess;
+
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
@@ -109,6 +112,11 @@ namespace ProjectWarden
             if (reviewForm.SadClicked == false && reviewForm.SmileyClicked == false)
             {
                 VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "UnclickedAndSumbitted");
+            }
+
+            if (networkAccess != NetworkAccess.Internet)
+            {
+
             }
 
             else

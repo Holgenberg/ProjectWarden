@@ -123,6 +123,10 @@
                                  Source="SadButton.png"
                                  Grid.Column="1"/>
                 </Grid>
+                <Label  x:Name="NoAccessToInternetInformer"
+                        Text ="*Error: No Internet Connection"
+                        TextColor="Red"
+                        IsVisible="False"/>
                 <Button Text="Submit"
                         HorizontalOptions="CenterAndExpand"
                         Clicked="SubmitBtn_Clicked"/>

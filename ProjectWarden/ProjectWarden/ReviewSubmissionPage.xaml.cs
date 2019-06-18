@@ -77,8 +77,6 @@ namespace ProjectWarden
 
         private void SubmitBtn_Clicked(object sender, EventArgs e)
         {
-            NetworkAccess networkAccess = Connectivity.NetworkAccess;
-
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
@@ -114,9 +112,9 @@ namespace ProjectWarden
                 VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "UnclickedAndSumbitted");
             }
 
-            if (networkAccess != NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-
+                NoAccessToInternetInformer.IsVisible = true;
             }
 
             else

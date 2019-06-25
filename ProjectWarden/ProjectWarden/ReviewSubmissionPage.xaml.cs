@@ -82,17 +82,17 @@ namespace ProjectWarden
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
             }
 
-            if (string.IsNullOrEmpty(reviewForm.CityTown))
+            else if (string.IsNullOrEmpty(reviewForm.CityTown))
             {
                 VisualStateManager.GoToState(CityTown, "HasNoText");
             }
 
-            if (string.IsNullOrEmpty(reviewForm.CountyRegionState))
+            else if (string.IsNullOrEmpty(reviewForm.CountyRegionState))
             {
                 VisualStateManager.GoToState(CountyRegionState, "HasNoText");
             }
 
-            if (string.IsNullOrEmpty(reviewForm.Postcode))
+            else if (string.IsNullOrEmpty(reviewForm.Postcode))
             {
                 VisualStateManager.GoToState(Postcode, "HasNoText");
             }
@@ -102,17 +102,17 @@ namespace ProjectWarden
                 VisualStateManager.GoToState(Postcode, "InvalidPostcode");
             }
 
-            if (string.IsNullOrEmpty(reviewForm.Name))
+            else if (string.IsNullOrEmpty(reviewForm.Name))
             {
                 reviewForm.Name = "anonymous";
             }         
             
-            if (reviewForm.SadClicked == false && reviewForm.SmileyClicked == false)
+            else if (reviewForm.SadClicked == false && reviewForm.SmileyClicked == false)
             {
                 VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "UnclickedAndSumbitted");
             }
 
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            else if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 NoAccessToInternetInformer.IsVisible = true;
             }

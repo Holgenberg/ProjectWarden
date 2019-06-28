@@ -16,18 +16,6 @@ namespace ProjectWarden
     {
         ReviewForm reviewForm;
 
-        public ReviewSubmissionPage()
-        {
-            InitializeComponent();
-            SetBindingContextToReviewForm();
-
-            VisualStateManager.GoToState(SmileyButton, "Unclicked");
-            VisualStateManager.GoToState(SadButton, "Unclicked");
-
-            reviewForm.SadClicked = false;
-            reviewForm.SmileyClicked = false;
-        }
-
         private void SetBindingContextToReviewForm()
         {
             reviewForm = new ReviewForm();
@@ -142,6 +130,22 @@ namespace ProjectWarden
         private void Postcode_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             VisualStateManager.GoToState(Postcode, "HasText");
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            NavigationPage.SetHasNavigationBar(this, true);
+
+            InitializeComponent();
+            SetBindingContextToReviewForm();
+
+            VisualStateManager.GoToState(SmileyButton, "Unclicked");
+            VisualStateManager.GoToState(SadButton, "Unclicked");
+
+            reviewForm.SadClicked = false;
+            reviewForm.SmileyClicked = false;
         }
     }
 }

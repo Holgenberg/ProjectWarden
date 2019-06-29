@@ -46,10 +46,15 @@ namespace ProjectWarden
             reviewForm.SmileyClicked = true;
             reviewForm.SadClicked = false;
 
+            ChangeButtonVisualStates(SmileyButton, SadButton);
+        }
+
+        private void ChangeButtonVisualStates(ImageButton clickedButton, ImageButton unclickedButton)
+        {
             VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "Clicked");
 
-            VisualStateManager.GoToState(SmileyButton, "Clicked");
-            VisualStateManager.GoToState(SadButton, "Unclicked");
+            VisualStateManager.GoToState(clickedButton, "Clicked");
+            VisualStateManager.GoToState(unclickedButton, "Unclicked");
         }
 
         private void SadBtn_Clicked(object sender, EventArgs e)
@@ -57,10 +62,7 @@ namespace ProjectWarden
             reviewForm.SadClicked = true;
             reviewForm.SmileyClicked = false;
 
-            VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "Clicked");
-
-            VisualStateManager.GoToState(SadButton, "Clicked");
-            VisualStateManager.GoToState(SmileyButton, "Unclicked");
+            ChangeButtonVisualStates(SadButton, SmileyButton);
         }
 
         private void SubmitBtn_Clicked(object sender, EventArgs e)
@@ -139,13 +141,43 @@ namespace ProjectWarden
             NavigationPage.SetHasNavigationBar(this, true);
 
             InitializeComponent();
-            SetBindingContextToReviewForm();
 
             VisualStateManager.GoToState(SmileyButton, "Unclicked");
             VisualStateManager.GoToState(SadButton, "Unclicked");
 
-            reviewForm.SadClicked = false;
-            reviewForm.SmileyClicked = false;
+            if (reviewForm == null)
+            {
+                SetBindingContextToReviewForm();
+
+                reviewForm.SadClicked = false;
+                reviewForm.SmileyClicked = false;
+            }
+
+            else
+            {
+                PopulateFormEntriesFromSavedForm();
+            }
+        }
+
+        private void PopulateFormEntriesFromSavedForm()
+        {
+            AddressLine1.Text = reviewForm.AddressLine1;
+            AddressLine2.Text = reviewForm.AddressLine2;
+            CityTown.Text = reviewForm.CityTown;
+            CountyRegionState.Text = reviewForm.CountyRegionState;
+            Postcode.Text = reviewForm.Postcode;
+            Name.Text = reviewForm.Name;
+            Review.Text = reviewForm.Review;
+
+            if (reviewForm.SmileyClicked)
+            {
+                ChangeButtonVisualStates(SmileyButton, SadButton);
+            }
+
+            else if (reviewForm.SadClicked)
+            {
+                ChangeButtonVisualStates(SadButton, SmileyButton);
+            }
         }
     }
 }

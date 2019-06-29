@@ -46,7 +46,8 @@
                        TextChanged="AddressLine1_OnTextChanged"
                        Style="{StaticResource TextRequredStyle}"/>
                 <Label Text="Address Line 2"/>
-                <Entry Text="{Binding ReviewForm.AddressLine2}"/>
+                <Entry x:Name="AddressLine2"
+                       Text="{Binding ReviewForm.AddressLine2}"/>
                 <Label Text="City / Town"/>
                 <Entry x:Name="CityTown"
                        Text="{Binding ReviewForm.CityTown}"
@@ -88,10 +89,12 @@
                     </VisualStateManager.VisualStateGroups>
                 </Entry>
                 <Label Text="Leave a Name (optional)"/>
-                <Entry Text="{Binding ReviewForm.Name}"
-                        Placeholder="anonymous"/>
+                <Entry x:Name="Name"
+                       Text="{Binding ReviewForm.Name}"
+                       Placeholder="anonymous"/>
                 <Label Text="Your Review (optional)"/>
-                <Editor Text="{Binding ReviewForm.Review}"
+                <Editor x:Name="Review"
+                        Text="{Binding ReviewForm.Review}"
                         AutoSize="TextChanges"/>
                 <Label  x:Name="SadOrSmileyButtonClickInformer"
                         Text="Please click one of the following responses">

@@ -67,6 +67,11 @@ namespace ProjectWarden
 
         private void SubmitBtn_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(reviewForm.Name))
+            {
+                reviewForm.Name = "anonymous";
+            }
+
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
@@ -92,11 +97,6 @@ namespace ProjectWarden
                 VisualStateManager.GoToState(Postcode, "InvalidPostcode");
             }
 
-            else if (string.IsNullOrEmpty(reviewForm.Name))
-            {
-                reviewForm.Name = "anonymous";
-            }         
-            
             else if (reviewForm.SadClicked == false && reviewForm.SmileyClicked == false)
             {
                 VisualStateManager.GoToState(SadOrSmileyButtonClickInformer, "UnclickedAndSumbitted");

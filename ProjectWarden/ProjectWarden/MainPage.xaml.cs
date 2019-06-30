@@ -17,16 +17,6 @@ namespace ProjectWarden
         public MainPage()
         {
             InitializeComponent();
-            SetPropertyAddresses();            
-        }
-
-        private void SetPropertyAddresses()
-        {
-            propertyAddresses = new List<PropertyAddress>()
-            {
-                new PropertyAddress(){Address="37 Bagpipe Lane, Shamrock, Ireland", Postcode="A54 F4R2"},
-                new PropertyAddress(){Address="54 Guiness Avenue, Potato, Ireland", Postcode="T45 B4R2"}
-            };
         }
 
         private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -43,25 +33,8 @@ namespace ProjectWarden
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
                 SubmitReviewBtn.IsVisible = false;
                 AddressAndPostcodeList.IsVisible = true;
-                AddressAndPostcodeList.ItemsSource = GetRelevantPropertyAddresses(e);                         
+                AddressAndPostcodeList.ItemsSource = WebAPIHandler.GetRelevantPropertyAddresses(e);                         
             }
-        }
-
-        private IEnumerable GetRelevantPropertyAddresses(TextChangedEventArgs e)
-        {
-            var relevantPropertyAdressesAndPostcodes = new List<PropertyAddress>();
-
-            CultureInfo culture = new CultureInfo("es-ES", false);
-
-            relevantPropertyAdressesAndPostcodes.AddRange(propertyAddresses.Where(pAddress => 
-                culture.CompareInfo.IndexOf(pAddress.Address, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
-
-            relevantPropertyAdressesAndPostcodes.AddRange(propertyAddresses.Where(pPostcode =>
-                culture.CompareInfo.IndexOf(pPostcode.Postcode, e.NewTextValue, CompareOptions.IgnoreCase) >= 0));
-
-            relevantPropertyAdressesAndPostcodes = relevantPropertyAdressesAndPostcodes.Distinct().ToList();
-
-            return relevantPropertyAdressesAndPostcodes;
         }
 
         async void SubmitReviewBtn_Clicked(object sender, EventArgs e)

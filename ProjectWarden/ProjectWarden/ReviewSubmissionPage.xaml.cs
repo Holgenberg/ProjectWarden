@@ -72,6 +72,8 @@ namespace ProjectWarden
                 reviewForm.Name = "anonymous";
             }
 
+            // error check before submission
+
             if (string.IsNullOrEmpty(reviewForm.AddressLine1))
             {
                 VisualStateManager.GoToState(AddressLine1, "HasNoText");
@@ -106,6 +108,8 @@ namespace ProjectWarden
             {
                 NoAccessToInternetInformer.IsVisible = true;
             }
+
+            //  submission
 
             else
             {

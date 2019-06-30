@@ -15,11 +15,9 @@ namespace ProjectWarden.Models
             var json = JsonConvert.SerializeObject(reviewForm);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = null;
-
             using (HttpClient httpClient = new HttpClient())
             {
-                response = await httpClient.PostAsync(destinationUri, content);
+                await httpClient.PostAsync(destinationUri, content);
             }
         }
     }

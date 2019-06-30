@@ -25,7 +25,7 @@ namespace ProjectWarden
         protected override bool OnBackButtonPressed()
         {
             HideThisPageContent();
-            Navigation.PopAsync(true);
+            Navigation.PopAsync();
             return base.OnBackButtonPressed();
         }
 

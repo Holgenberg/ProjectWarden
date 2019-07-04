@@ -12,8 +12,6 @@ namespace ProjectWarden
 {
     public partial class MainPage : ContentPage
     {
-        List<PropertyAddress> propertyAddresses;
-
         public MainPage()
         {
             InitializeComponent();

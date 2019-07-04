@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ProjectWarden.Models
 {
-    public class PropertyAddress
+    public class AddressListing
     {
-        public string Address { get; set; }
+        public string AddressLine1 { get; set; }
         public string Postcode { get; set; }
     }
 }

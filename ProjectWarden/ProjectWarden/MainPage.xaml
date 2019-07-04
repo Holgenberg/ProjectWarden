@@ -23,7 +23,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
-                        Text="{Binding Address}"
+                        Text="{Binding AddressLine1}"
                         Detail="{Binding Postcode}">
                     </TextCell>
                 </DataTemplate>

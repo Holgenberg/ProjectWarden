@@ -31,7 +31,7 @@ namespace ProjectWarden
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
                 SubmitReviewBtn.IsVisible = false;
                 AddressAndPostcodeList.IsVisible = true;
-                AddressAndPostcodeList.ItemsSource = WebAPIHandler.GetRelevantPropertyAddresses(e);                         
+                AddressAndPostcodeList.ItemsSource = WebAPIHandler.GetRelevantAddressListings(e);                         
             }
         }
 

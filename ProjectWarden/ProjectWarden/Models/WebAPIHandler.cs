@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Collections;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Net;
 
 namespace ProjectWarden.Models
 {
@@ -18,19 +20,22 @@ namespace ProjectWarden.Models
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             using (HttpClient httpClient = new HttpClient())
-            {
+            {                
                 await httpClient.PostAsync(destinationUri, content);
             }
         }
 
-        public static IEnumerable GetRelevantPropertyAddresses(TextChangedEventArgs e)
+        public static IEnumerable GetRelevantAddressListings(TextChangedEventArgs e)
         {
-            var destinationUri = new Uri("https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/getreviews");
+            var searchQuery = e.NewTextValue;
 
-            var searchQueryText = e.NewTextValue;
+            HttpResponseMessage response = null;
 
-            var json = JsonConvert.SerializeObject(searchQueryText);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            using (HttpClient httpClient = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+            {
+                httpClient.BaseAddress = new Uri("https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/");
+                response = httpClient.GetAsync($"getreviews?searchquery={searchQuery}").Result;
+            }
 
             throw new NotImplementedException();
         }

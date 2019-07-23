@@ -23,6 +23,7 @@ namespace ProjectWarden
             {
                 SubmitReviewBtn.IsVisible = true;
                 AddressAndPostcodeList.IsVisible = false;
+                AddressAndPostcodeList.ItemsSource = null;
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.PositionProportional);
             }
 

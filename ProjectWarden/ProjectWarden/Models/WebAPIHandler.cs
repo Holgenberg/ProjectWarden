@@ -25,7 +25,13 @@ namespace ProjectWarden.Models
             }
         }
 
-        public static IEnumerable GetRelevantAddressListings(TextChangedEventArgs e)
+        public static async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
+        {
+            var addressListings = await Task.Run(() => GetRelevantAddressListings(e));
+            return addressListings;
+        }
+
+        private static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)
         {
             var searchQuery = e.NewTextValue;
 
@@ -37,7 +43,10 @@ namespace ProjectWarden.Models
                 response = httpClient.GetAsync($"getreviews?searchquery={searchQuery}").Result;
             }
 
-            throw new NotImplementedException();
+            var addressListingsJson = response.Content.ReadAsStringAsync().Result;
+            var addressListings = JsonConvert.DeserializeObject<List<AddressListing>>(addressListingsJson);
+
+            return addressListings;
         }
     }
 }

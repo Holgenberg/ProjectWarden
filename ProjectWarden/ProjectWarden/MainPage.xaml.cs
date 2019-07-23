@@ -17,7 +17,7 @@ namespace ProjectWarden
             InitializeComponent();
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        private async void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
@@ -31,7 +31,7 @@ namespace ProjectWarden
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
                 SubmitReviewBtn.IsVisible = false;
                 AddressAndPostcodeList.IsVisible = true;
-                AddressAndPostcodeList.ItemsSource = WebAPIHandler.GetRelevantAddressListings(e);                         
+                AddressAndPostcodeList.ItemsSource = await WebAPIHandler.GetRelevantAddressListingsAsync(e);                         
             }
         }
 

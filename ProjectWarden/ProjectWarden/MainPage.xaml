@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProjectWarden"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="ProjectWarden.MainPage"
              NavigationPage.HasNavigationBar="False">
 
@@ -18,8 +19,14 @@
     <StackLayout x:Name="StckLayout"
                  AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
                  AbsoluteLayout.LayoutFlags="PositionProportional">
-        <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
-        <ListView x:Name="AddressAndPostcodeList" IsVisible="False">
+            <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
+            <forms:AnimationView x:Name="AddressListingsSearchAnimation"
+                                 Animation="117-progress-bar.json"
+                                 AutoPlay="True" 
+                                 Loop="true"
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="FillAndExpand"/>
+            <ListView x:Name="AddressAndPostcodeList" IsVisible="False">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell

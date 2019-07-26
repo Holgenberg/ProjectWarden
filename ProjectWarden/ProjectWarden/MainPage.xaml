@@ -31,7 +31,8 @@
                     <DataTemplate>
                         <TextCell
                         Text="{Binding AddressLine1}"
-                        Detail="{Binding Postcode}">
+                        Detail="{Binding Postcode}"
+                        TextColor="#0074ff">
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

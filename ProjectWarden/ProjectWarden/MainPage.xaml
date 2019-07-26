@@ -23,10 +23,9 @@
             <forms:AnimationView x:Name="AddressListingsSearchAnimation"
                                  Animation="117-progress-bar.json"
                                  AutoPlay="True" 
-                                 Loop="true"
-                                 VerticalOptions="FillAndExpand"
-                                 HorizontalOptions="FillAndExpand"
-                                 IsVisible="False"/>
+                                 Loop="true"                                 
+                                 IsVisible="False"
+                                 TranslationY="-200"/>
             <ListView x:Name="AddressListingsList" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>

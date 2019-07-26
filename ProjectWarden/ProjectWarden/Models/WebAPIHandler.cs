@@ -25,12 +25,6 @@ namespace ProjectWarden.Models
             }
         }
 
-        public static async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
-        {
-            var addressListings = await Task.Run(() => GetRelevantAddressListings(e));
-            return addressListings;
-        }
-
         public static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)
         {
             var searchQuery = e.NewTextValue;

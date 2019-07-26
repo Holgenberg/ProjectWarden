@@ -45,7 +45,7 @@ namespace ProjectWarden
             await Navigation.PushAsync(new ReviewSubmissionPage());
         }
 
-        private async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
+        private static async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
         {
             var addressListings = await Task.Run(() => WebAPIHandler.GetRelevantAddressListings(e));
             return addressListings;

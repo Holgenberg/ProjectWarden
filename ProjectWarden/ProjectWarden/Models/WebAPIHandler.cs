@@ -31,7 +31,7 @@ namespace ProjectWarden.Models
             return addressListings;
         }
 
-        private static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)
+        public static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)
         {
             var searchQuery = e.NewTextValue;
 

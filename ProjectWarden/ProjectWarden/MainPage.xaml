@@ -16,27 +16,28 @@
                 AbsoluteLayout.LayoutBounds="0.99, 0.01, -1, -1"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
         </Button>
-    <StackLayout x:Name="StckLayout"
-                 AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
-                 AbsoluteLayout.LayoutFlags="PositionProportional">
+        <StackLayout x:Name="StckLayout"
+                     AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional">
             <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
             <forms:AnimationView x:Name="AddressListingsSearchAnimation"
                                  Animation="117-progress-bar.json"
                                  AutoPlay="True" 
                                  Loop="true"
                                  VerticalOptions="FillAndExpand"
-                                 HorizontalOptions="FillAndExpand"/>
-            <ListView x:Name="AddressAndPostcodeList" IsVisible="False">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell
+                                 HorizontalOptions="FillAndExpand"
+                                 IsVisible="False"/>
+            <ListView x:Name="AddressListingsList" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
                         Text="{Binding AddressLine1}"
                         Detail="{Binding Postcode}">
-                    </TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </AbsoluteLayout>
 
 </ContentPage>

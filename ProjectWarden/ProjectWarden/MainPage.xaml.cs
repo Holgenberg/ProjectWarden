@@ -22,8 +22,9 @@ namespace ProjectWarden
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
                 SubmitReviewBtn.IsVisible = true;
-                AddressAndPostcodeList.IsVisible = false;
-                AddressAndPostcodeList.ItemsSource = null;
+                AddressListingsSearchAnimation.IsVisible = false;
+                AddressListingsList.IsVisible = false;
+                AddressListingsList.ItemsSource = null;
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.PositionProportional);
             }
 
@@ -31,14 +32,23 @@ namespace ProjectWarden
             {
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
                 SubmitReviewBtn.IsVisible = false;
-                AddressAndPostcodeList.IsVisible = true;
-                AddressAndPostcodeList.ItemsSource = await WebAPIHandler.GetRelevantAddressListingsAsync(e);                         
+                AddressListingsList.IsVisible = true;
+
+                AddressListingsSearchAnimation.IsVisible = true;
+                AddressListingsList.ItemsSource = await GetRelevantAddressListingsAsync(e);
+                AddressListingsSearchAnimation.IsVisible = false;
             }
         }
 
         async void SubmitReviewBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ReviewSubmissionPage());
+        }
+
+        private async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
+        {
+            var addressListings = await Task.Run(() => WebAPIHandler.GetRelevantAddressListings(e));
+            return addressListings;
         }
     }
 }

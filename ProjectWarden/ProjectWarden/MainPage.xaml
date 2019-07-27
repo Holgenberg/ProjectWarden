@@ -4,14 +4,15 @@
              xmlns:local="clr-namespace:ProjectWarden"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="ProjectWarden.MainPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="AppBackground.jpg">
 
     <AbsoluteLayout x:Name="AbsLayout">
         <Button x:Name="SubmitReviewBtn"
                 Clicked="SubmitReviewBtn_Clicked"
                 Text="+"
                 FontSize="40"
-                TextColor="SlateGray"
+                TextColor="White"
                 BackgroundColor="Transparent"
                 AbsoluteLayout.LayoutBounds="0.99, 0.01, -1, -1"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
@@ -19,7 +20,9 @@
         <StackLayout x:Name="StckLayout"
                      AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
                      AbsoluteLayout.LayoutFlags="PositionProportional">
-            <SearchBar  Placeholder="Search Address or Postcode" TextChanged="SearchBar_OnTextChanged"/>
+            <SearchBar  Placeholder="Search Address or Postcode" 
+                        TextChanged="SearchBar_OnTextChanged"
+                        BackgroundColor="White"/>
             <forms:AnimationView x:Name="AddressListingsSearchAnimation"
                                  Animation="117-progress-bar.json"
                                  AutoPlay="True" 

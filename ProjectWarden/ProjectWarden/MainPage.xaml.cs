@@ -13,7 +13,7 @@ namespace ProjectWarden
     public partial class MainPage : ContentPage
     {
         public MainPage()
-        {
+        {            
             InitializeComponent();
         }
 
@@ -21,6 +21,7 @@ namespace ProjectWarden
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
+                BackgroundImageSource = "AppBackground.jpg";
                 SubmitReviewBtn.IsVisible = true;
                 AddressListingsSearchAnimation.IsVisible = false;
                 AddressListingsList.IsVisible = false;
@@ -31,6 +32,7 @@ namespace ProjectWarden
             else
             {
                 AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.None);
+                BackgroundImageSource = null;
                 SubmitReviewBtn.IsVisible = false;
                 AddressListingsList.IsVisible = true;
 

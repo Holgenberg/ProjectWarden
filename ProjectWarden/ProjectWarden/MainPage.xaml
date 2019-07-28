@@ -5,7 +5,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="ProjectWarden.MainPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundImageSource="AppBackground.jpg">
+             BackgroundImageSource="AppBackground.png">
 
     <AbsoluteLayout x:Name="AbsLayout">
         <Button x:Name="SubmitReviewBtn"

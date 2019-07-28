@@ -12,7 +12,7 @@
                 Clicked="SubmitReviewBtn_Clicked"
                 Text="+"
                 FontSize="40"
-                TextColor="White"
+                TextColor="#f9f9f9"
                 BackgroundColor="Transparent"
                 AbsoluteLayout.LayoutBounds="0.99, 0.05, -1, -1"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
@@ -22,7 +22,7 @@
                      AbsoluteLayout.LayoutFlags="PositionProportional">
             <SearchBar  Placeholder="Search Address or Postcode" 
                         TextChanged="SearchBar_OnTextChanged"
-                        BackgroundColor="White"/>
+                        BackgroundColor="#f9f9f9"/>
             <forms:AnimationView x:Name="AddressListingsSearchAnimation"
                                  Animation="117-progress-bar.json"
                                  AutoPlay="True" 

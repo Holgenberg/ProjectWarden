@@ -14,7 +14,7 @@
                 FontSize="40"
                 TextColor="White"
                 BackgroundColor="Transparent"
-                AbsoluteLayout.LayoutBounds="0.99, 0.01, -1, -1"
+                AbsoluteLayout.LayoutBounds="0.99, 0.05, -1, -1"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
         </Button>
         <StackLayout x:Name="StckLayout"

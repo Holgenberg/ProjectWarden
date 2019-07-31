@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using ProjectWarden.Models;
 using System.Collections;
 using System.Globalization;
+using Xamarin.Essentials;
 
 namespace ProjectWarden
 {
@@ -37,7 +38,12 @@ namespace ProjectWarden
                 AddressListingsList.IsVisible = true;
 
                 AddressListingsSearchAnimation.IsVisible = true;
-                AddressListingsList.ItemsSource = await GetRelevantAddressListingsAsync(e);
+
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    AddressListingsList.ItemsSource = await GetRelevantAddressListingsAsync(e);
+                }
+
                 AddressListingsSearchAnimation.IsVisible = false;
             }
         }
@@ -47,7 +53,7 @@ namespace ProjectWarden
             await Navigation.PushAsync(new ReviewSubmissionPage());
         }
 
-        private static async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
+        private async Task<List<AddressListing>> GetRelevantAddressListingsAsync(TextChangedEventArgs e)
         {
             var addressListings = await Task.Run(() => WebAPIHandler.GetRelevantAddressListings(e));
             return addressListings;

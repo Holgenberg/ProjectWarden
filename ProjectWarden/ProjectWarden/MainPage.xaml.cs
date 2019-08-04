@@ -22,12 +22,7 @@ namespace ProjectWarden
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
-                BackgroundImageSource = "AppBackground.jpg";
-                SubmitReviewBtn.IsVisible = true;
-                AddressListingsSearchAnimation.IsVisible = false;
-                AddressListingsList.IsVisible = false;
-                AddressListingsList.ItemsSource = null;
-                AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.PositionProportional);
+                ResetMainPageProperties();
             }
 
             else
@@ -48,7 +43,30 @@ namespace ProjectWarden
             }
         }
 
-        async void SubmitReviewBtn_Clicked(object sender, EventArgs e)
+        private void ResetMainPageProperties()
+        {
+            BackgroundImageSource = "AppBackground.jpg";
+            SubmitReviewBtn.IsVisible = true;
+            AddressListingsSearchAnimation.IsVisible = false;
+            AddressListingsList.IsVisible = false;
+            AddressListingsList.ItemsSource = null;
+            AbsoluteLayout.SetLayoutFlags(StckLayout, AbsoluteLayoutFlags.PositionProportional);
+        }
+
+        private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var addressListing = e.Item as AddressListing;
+
+            var reviewsPage = new ReviewsPage();
+            reviewsPage.ReviewsAddressListing = addressListing;
+
+            await Navigation.PushAsync(reviewsPage);
+
+            SearchBar.Text = string.Empty;
+            ResetMainPageProperties();
+        }
+
+        private async void SubmitReviewBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ReviewSubmissionPage());
         }

@@ -20,7 +20,8 @@
         <StackLayout x:Name="StckLayout"
                      AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
                      AbsoluteLayout.LayoutFlags="PositionProportional">
-            <SearchBar  Placeholder="Search Address or Postcode" 
+            <SearchBar  x:Name="SearchBar"
+                        Placeholder="Search Address or Postcode" 
                         TextChanged="SearchBar_OnTextChanged"
                         BackgroundColor="#f9f9f9"/>
             <forms:AnimationView x:Name="AddressListingsSearchAnimation"
@@ -29,7 +30,9 @@
                                  Loop="true"                                 
                                  IsVisible="False"
                                  TranslationY="-200"/>
-            <ListView x:Name="AddressListingsList" IsVisible="False">
+            <ListView x:Name="AddressListingsList" 
+                      IsVisible="False"
+                      ItemTapped="ListView_OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell

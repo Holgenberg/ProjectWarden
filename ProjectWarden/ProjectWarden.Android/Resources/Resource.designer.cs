@@ -6902,9 +6902,6 @@ namespace ProjectWarden.Droid
 			// aapt resource value: 0x7f0d0190
 			public const int MainTheme_Base = 2131558800;
 			
-			// aapt resource value: 0x7f0d0192
-			public const int MyTheme = 2131558802;
-			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;
 			

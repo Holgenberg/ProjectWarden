@@ -25,6 +25,22 @@ namespace ProjectWarden.Models
             }
         }
 
+        public static List<ReviewForm> GetRelevantReviews(AddressListing addressListing)
+        {
+            HttpResponseMessage response = null;
+
+            using (HttpClient httpClient = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+            {
+                httpClient.BaseAddress = new Uri("https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/");
+                response = httpClient.GetAsync($"getreviews?addressline1={addressListing.AddressLine1}&postcode={addressListing.Postcode}").Result;
+            }
+
+            var reviewsJson = response.Content.ReadAsStringAsync().Result;
+            var reviews = JsonConvert.DeserializeObject<List<ReviewForm>>(reviewsJson);
+
+            return reviews;
+        }
+
         public static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)
         {
             var searchQuery = e.NewTextValue;
@@ -34,7 +50,7 @@ namespace ProjectWarden.Models
             using (HttpClient httpClient = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
             {
                 httpClient.BaseAddress = new Uri("https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/");
-                response = httpClient.GetAsync($"getreviews?searchquery={searchQuery}").Result;
+                response = httpClient.GetAsync($"getaddresslistings?searchquery={searchQuery}").Result;
             }
 
             var addressListingsJson = response.Content.ReadAsStringAsync().Result;

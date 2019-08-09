@@ -57,8 +57,7 @@ namespace ProjectWarden
         {
             var addressListing = e.Item as AddressListing;
 
-            var reviewsPage = new ReviewsPage();
-            reviewsPage.ReviewsAddressListing = addressListing;
+            var reviewsPage = new ReviewsPage(addressListing);
 
             await Navigation.PushAsync(reviewsPage);
 

@@ -20,9 +20,37 @@ namespace ProjectWarden
 			InitializeComponent ();
 
             AddressListing = addressListing;
-
             HandleReviewsToDisplay();
 		}
+
+        private void DisplayReviews(List<ReviewForm> reviews)
+        {
+            ReviewsSearchAnimation.IsVisible = false;
+            ReviewsScroller.IsVisible = true;
+
+            var displayReviews = new List<DisplayReview>();
+
+            foreach (var review in reviews)
+            {
+                var displayReview = new DisplayReview();
+                displayReview.Review = review.Review;
+                displayReview.Username = review.Name;
+
+                if (review.SmileyClicked)
+                {
+                    displayReview.ImageSource = "SmileyButton.png";
+                }
+
+                else if (review.SadClicked)
+                {
+                    displayReview.ImageSource = "SadButton.png";
+                }
+
+                displayReviews.Add(displayReview);
+            }
+
+            ReviewsList.ItemsSource = displayReviews;
+        }
 
         private async void HandleReviewsToDisplay()
         {
@@ -31,9 +59,13 @@ namespace ProjectWarden
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 var reviews = await GetRelevantReviewsAsync();
+                DisplayReviews(reviews);
             }
 
-            ReviewsSearchAnimation.IsVisible = false;
+            else
+            {
+                await Navigation.PopAsync();
+            }
         }
 
         private async Task<List<ReviewForm>> GetRelevantReviewsAsync()

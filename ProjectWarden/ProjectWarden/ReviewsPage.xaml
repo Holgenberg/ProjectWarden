@@ -11,6 +11,20 @@
                                  Loop="true" 
                                  HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="CenterAndExpand"/>
+            <ScrollView x:Name="ReviewsScroller" IsVisible="False">
+                <ListView x:Name="ReviewsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell
+                                ImageSource="{Binding ImageSource}"
+                                Text="{Binding Review}"
+                                Detail="{Binding Username}"
+                                TextColor="#0074ff">
+                            </ImageCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

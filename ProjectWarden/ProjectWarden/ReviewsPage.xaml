@@ -12,7 +12,8 @@
                                  HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="CenterAndExpand"/>
             <ScrollView x:Name="ReviewsScroller" IsVisible="False">
-                <ListView x:Name="ReviewsList">
+                <ListView x:Name="ReviewsList"
+                          IsEnabled="False">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ImageCell

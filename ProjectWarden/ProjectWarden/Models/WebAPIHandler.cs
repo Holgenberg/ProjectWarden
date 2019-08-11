@@ -25,20 +25,20 @@ namespace ProjectWarden.Models
             }
         }
 
-        public static List<ReviewForm> GetRelevantReviews(AddressListing addressListing)
+        public static List<DisplayReview> GetRelevantDisplayReviews(AddressListing addressListing)
         {
             HttpResponseMessage response = null;
 
             using (HttpClient httpClient = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
             {
                 httpClient.BaseAddress = new Uri("https://projectwardendatabaseapi20190611073151.azurewebsites.net/api/review/");
-                response = httpClient.GetAsync($"getreviews?addressline1={addressListing.AddressLine1}&postcode={addressListing.Postcode}").Result;
+                response = httpClient.GetAsync($"getdisplayreviews?addressline1={addressListing.AddressLine1}&postcode={addressListing.Postcode}").Result;
             }
 
-            var reviewsJson = response.Content.ReadAsStringAsync().Result;
-            var reviews = JsonConvert.DeserializeObject<List<ReviewForm>>(reviewsJson);
+            var displayReviewsJson = response.Content.ReadAsStringAsync().Result;
+            var displayReviews = JsonConvert.DeserializeObject<List<DisplayReview>>(displayReviewsJson);
 
-            return reviews;
+            return displayReviews;
         }
 
         public static List<AddressListing> GetRelevantAddressListings(TextChangedEventArgs e)

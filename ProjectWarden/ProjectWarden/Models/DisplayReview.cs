@@ -7,7 +7,8 @@ namespace ProjectWarden.Models
     class DisplayReview
     {
         public string Review { get; set; }
-        public string Username { get; set; }
+        public string ReviewerName { get; set; }
         public string ImageSource { get; set; }
+        public bool Liked { get; set; }
     }
 }

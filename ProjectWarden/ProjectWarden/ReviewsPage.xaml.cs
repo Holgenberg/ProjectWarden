@@ -23,30 +23,14 @@ namespace ProjectWarden
             HandleReviewsToDisplay();
 		}
 
-        private void DisplayReviews(List<ReviewForm> reviews)
+        private void DisplayReviews(List<DisplayReview> displayReviews)
         {
             ReviewsSearchAnimation.IsVisible = false;
             ReviewsScroller.IsVisible = true;
 
-            var displayReviews = new List<DisplayReview>();
-
-            foreach (var review in reviews)
+            foreach (var review in displayReviews)
             {
-                var displayReview = new DisplayReview();
-                displayReview.Review = review.Review;
-                displayReview.Username = review.Name;
-
-                if (review.SmileyClicked)
-                {
-                    displayReview.ImageSource = "SmileyButton.png";
-                }
-
-                else if (review.SadClicked)
-                {
-                    displayReview.ImageSource = "SadButton.png";
-                }
-
-                displayReviews.Add(displayReview);
+                review.ImageSource = review.Liked ? "SmileyButton.jpg" : "SadButton.jps";
             }
 
             ReviewsList.ItemsSource = displayReviews;
@@ -58,8 +42,8 @@ namespace ProjectWarden
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                var reviews = await GetRelevantReviewsAsync();
-                DisplayReviews(reviews);
+                var displayReviews = await GetRelevantDisplayReviewsAsync();
+                DisplayReviews(displayReviews);
             }
 
             else
@@ -68,10 +52,10 @@ namespace ProjectWarden
             }
         }
 
-        private async Task<List<ReviewForm>> GetRelevantReviewsAsync()
+        private async Task<List<DisplayReview>> GetRelevantDisplayReviewsAsync()
         {
-            var reviews = await Task.Run(() => WebAPIHandler.GetRelevantReviews(AddressListing));
-            return reviews;
+            var displayReviews = await Task.Run(() => WebAPIHandler.GetRelevantDisplayReviews(AddressListing));
+            return displayReviews;
         }
     }
 }

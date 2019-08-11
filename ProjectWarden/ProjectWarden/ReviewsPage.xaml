@@ -18,7 +18,7 @@
                             <ImageCell
                                 ImageSource="{Binding ImageSource}"
                                 Text="{Binding Review}"
-                                Detail="{Binding Username}"
+                                Detail="{Binding ReviewerName}"
                                 TextColor="#0074ff">
                             </ImageCell>
                         </DataTemplate>

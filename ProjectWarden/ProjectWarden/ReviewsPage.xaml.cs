@@ -30,7 +30,7 @@ namespace ProjectWarden
 
             foreach (var review in displayReviews)
             {
-                review.ImageSource = review.Liked ? "SmileyButton.jpg" : "SadButton.jps";
+                review.ImageSource = review.Liked ? "SmileyButton.png" : "SadButton.png";
             }
 
             ReviewsList.ItemsSource = displayReviews;

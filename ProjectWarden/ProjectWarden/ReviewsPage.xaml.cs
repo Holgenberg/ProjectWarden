@@ -10,23 +10,22 @@ using Xamarin.Forms.Xaml;
 
 namespace ProjectWarden
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ReviewsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ReviewsPage : ContentPage
+    {
         private AddressListing AddressListing;
 
-        public ReviewsPage (AddressListing addressListing)
-		{
-			InitializeComponent ();
+        public ReviewsPage(AddressListing addressListing)
+        {
+            InitializeComponent();
 
             AddressListing = addressListing;
             HandleReviewsToDisplay();
-		}
+        }
 
         private void DisplayReviews(List<DisplayReview> displayReviews)
         {
             ReviewsSearchAnimation.IsVisible = false;
-            ReviewsScroller.IsVisible = true;
 
             foreach (var review in displayReviews)
             {
@@ -34,6 +33,7 @@ namespace ProjectWarden
             }
 
             ReviewsList.ItemsSource = displayReviews;
+            ReviewsList.IsVisible = true;
         }
 
         private async void HandleReviewsToDisplay()

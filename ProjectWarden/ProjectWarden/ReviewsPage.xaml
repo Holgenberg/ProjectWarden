@@ -11,27 +11,25 @@
                                  Loop="true" 
                                  HorizontalOptions="CenterAndExpand"
                                  VerticalOptions="CenterAndExpand"/>
-            <ScrollView x:Name="ReviewsScroller" IsVisible="False">
-                <ListView x:Name="ReviewsList"
-                          VerticalOptions="FillAndExpand"
-                          HasUnevenRows="True"
-                          IsEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Padding="5, 10, 5, 10">
-                                    <Label Text="{Binding ReviewerName}"  
+            <ListView x:Name="ReviewsList"                          
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="True"
+                      IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5, 10, 5, 10">
+                                <Label Text="{Binding ReviewerName}"  
                                            LineBreakMode="WordWrap" 
                                            TextColor="#0074ff"/>
-                                    <Label Text="{Binding Review}" 
+                                <Label Text="{Binding Review}" 
                                            LineBreakMode="WordWrap"/>
-                                    <Image Source="{Binding ImageSource}"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
+                                <Image Source="{Binding ImageSource}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -15,7 +15,8 @@
             <ListView x:Name="ReviewsList"                          
                       VerticalOptions="FillAndExpand"
                       HasUnevenRows="True"
-                      IsVisible="False">
+                      IsVisible="False"
+                      SeparatorColor="#0074ff">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell IsEnabled="False">

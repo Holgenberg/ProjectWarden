@@ -142,5 +142,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\AppBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ReviewsPageAppBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

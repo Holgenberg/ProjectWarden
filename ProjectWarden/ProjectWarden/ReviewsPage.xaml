@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="ProjectWarden.ReviewsPage"
-             BackgroundImageSource="ReviewsPageAppBackground">
+             BackgroundImageSource="ReviewsPageAppBackground.png">
     <ContentPage.Content>
         <StackLayout>
             <forms:AnimationView x:Name="ReviewsSearchAnimation"
